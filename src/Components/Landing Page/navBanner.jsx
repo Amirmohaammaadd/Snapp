@@ -154,7 +154,7 @@ const NavBanner = () => {
             />
           </div>
 
-          <img src={banner} alt="None" className="hidden lg:flex" />
+          <img src={banner} alt="None" className="hidden xl:flex" />
         </div>
       </div>
 
