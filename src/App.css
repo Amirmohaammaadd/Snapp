@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Lalezar";
+  font-weight: 700;
+  font-display: swap;
+  src: url("./assets/Fonts/Lalezar-Regular.ttf");
+}
+
+@font-face {
+  font-family: "IRANSansX";
+  font-weight: 100;
+  /* font-display: swap; */
+  src: url("./assets/Fonts/IRANSansX-Regular.woff2");
+}
+
+.Lalezar {
+  font-family: Lalezar !important;
+}
+
+p,
+button,
+span,
+Input,
+h2,
+h5 {
+  font-family: IRANSansX !important;
+}
+
+.swiper-button-disabled {
+  opacity: 0;
+}
+
+
