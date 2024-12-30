@@ -21,7 +21,7 @@ const TimeComp = ({ personalArr }) => {
     <>
       <TextTransition
         springConfig={presets.default}
-        className="text-[#ff2882]"
+        className="text-[#ff2882] font-bold"
       >
         {TEXTS[index % TEXTS.length]}
       </TextTransition>

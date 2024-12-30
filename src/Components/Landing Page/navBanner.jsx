@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal } from "antd";
+import { Button, Form, Input, message, Modal } from "antd";
 import Logo from "../../assets/img/snapp logo/snapLogo.png";
 import banner from "../../assets/img/header/header.png";
 import TimeComp from "../time";
@@ -8,12 +8,13 @@ import {
   ShopOutlined,
   UserAddOutlined,
 } from "@ant-design/icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import "../../App.css";
 import { useForm } from "antd/es/form/Form";
-import axios from "axios";
-import { useMutationState, useQuery } from "@tanstack/react-query";
+// import axios from "axios";
+// import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const NavBanner = () => {
   const [form] = useForm();
@@ -21,25 +22,25 @@ const NavBanner = () => {
 
   const [phoneInput, setPhoneInput] = useState("");
 
-  const [reCallApi, setReCallApi] = useState(false);
+  // const [reCallApi, setReCallApi] = useState(false);
 
   const getFormValue = (_, value) => {
     setPhoneInput(value.phoneNum);
   };
 
-  const fetchData = async () => {
-    const data = await axios.get("https://jsonplaceholder.typicode.com/todos");
-    setReCallApi(false);
-    return data;
-  };
+  // const fetchData = async () => {
+  //   const data = await axios.get("https://jsonplaceholder.typicode.com/todos");
+  //   setReCallApi(false);
+  //   return data;
+  // };
 
-  const resultData = useQuery({
-    queryKey: ["users"],
-    // queryKey: ["users", reCallApi],
-    queryFn: fetchData,
-    // enabled: true,
-    enabled: reCallApi,
-  });
+  // const resultData = useQuery({
+  //   queryKey: ["users"],
+  //   // queryKey: ["users", reCallApi],
+  //   queryFn: fetchData,
+  //   // enabled: true,
+  //   enabled: reCallApi,
+  // });
 
   // console.log("setReCallApi", reCallApi);
 
@@ -54,31 +55,46 @@ const NavBanner = () => {
   // console.log("Data2", resultData.isPending);
 
   // --------------------------------------
-  let data = JSON.stringify({
-    B: "",
-    A: "",
-  });
+  // let data = JSON.stringify({
+  //   B: "",
+  //   A: "",
+  // });
 
-  let config = {
-    method: "post",
-    maxBodyLength: Infinity,
-    url: "https://jsonplaceholder.typicode.com/todosss",
-    data: data,
-  };
+  // let config = {
+  //   method: "post",
+  //   maxBodyLength: Infinity,
+  //   url: "https://jsonplaceholder.typicode.com/todosss",
+  //   data: data,
+  // };
 
-  axios
-    .request(config)
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log("error");
-    });
+  // axios
+  //   .request(config)
+  //   .then((response) => {
+  //     console.log(response.data);
+  //   })
+  //   .catch((error) => {
+  //     console.log("error");
+  //   });
 
   // fetch("https://jsonplaceholder.typicode.com/todosss", { method: "get" })
   //   .then((response) => response.text())
   //   .then((result) => console.log(result))
   //   .catch((error) => console.error("awd"));
+
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const success = () => {
+    messageApi.open({
+      type: "success",
+      content: "رمز عبور برای شما ارسال شد",
+    });
+
+    setOpenModal(!openModal);
+    form.resetFields();
+    setPhoneInput("");
+  };
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -106,7 +122,10 @@ const NavBanner = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <button className="items-center gap-2 text-sm hidden lg:flex">
+            <button
+              className="items-center gap-2 text-sm hidden lg:flex"
+              onClick={() => navigate("/sellers-register")}
+            >
               <ShopOutlined className="text-lg" />
               ثبت نام فروشندگان
             </button>
@@ -154,7 +173,7 @@ const NavBanner = () => {
             />
           </div>
 
-          <img src={banner} alt="None" className="hidden xl:flex" />
+          <img src={banner} alt="None" className="hidden lg:flex" />
         </div>
       </div>
 
@@ -203,11 +222,14 @@ const NavBanner = () => {
             } `}
             size="large"
             disabled={phoneInput.length < 11}
+            onClick={success}
           >
             ادامه
           </Button>
         </Form>
       </Modal>
+
+      {contextHolder}
     </>
   );
 };

@@ -16,65 +16,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const ItemBox = () => {
+  const navigate = useNavigate();
+
   const dataItem = [
-    {
-      img: item1,
-      id: 1,
-    },
-    {
-      img: item2,
-      id: 2,
-    },
-    {
-      img: item3,
-      id: 3,
-    },
-    {
-      img: item4,
-      id: 4,
-    },
-    {
-      img: item5,
-      id: 5,
-    },
-    {
-      img: item6,
-      id: 6,
-    },
-    {
-      img: item7,
-      id: 7,
-    },
-    {
-      img: item8,
-      id: 8,
-    },
-    {
-      img: item9,
-      id: 9,
-    },
-    {
-      img: item10,
-      id: 10,
-    },
-    {
-      img: item11,
-      id: 11,
-    },
-    {
-      img: item12,
-      id: 12,
-    },
-    {
-      img: item13,
-      id: 13,
-    },
-    {
-      img: item14,
-      id: 14,
-    },
+    { img: item1, id: 1, label: "رستوران" },
+    { img: item2, id: 2, label: "سوپرمارکت" },
+    { img: item3, id: 3, label: "کافه" },
+    { img: item4, id: 4, label: "شیرینی‌" },
+    { img: item5, id: 5, label: "نانوایی" },
+    { img: item6, id: 6, label: "میوه" },
+    { img: item7, id: 7, label: "پروتئین" },
+    { img: item8, id: 8, label: "آبمیوه بستنی" },
+    { img: item9, id: 9, label: "لبنیات" },
+    { img: item10, id: 10, label: "گل و گیاه" },
+    { img: item11, id: 11, label: "عطاری" },
+    { img: item12, id: 12, label: "آجیل" },
+    { img: item13, id: 13, label: "قهوه و شکلات" },
+    { img: item14, id: 14, label: "سلامت و زیبایی" },
   ];
   return (
     <>
@@ -107,11 +68,15 @@ const ItemBox = () => {
         >
           {dataItem.map((item) => {
             return (
-              <SwiperSlide className="lg:!w-[10%]" key={item.id}>
-                <div className="flex flex-col border-slate-200 border bg-stone-50 pb-4 rounded-lg">
+              <SwiperSlide
+                className="lg:!w-[10%] cursor-pointer"
+                onClick={() => navigate("/allItems")}
+                key={item.id}
+              >
+                <div className="flex flex-col border-slate-200 border bg-stone-50 pb-4 rounded-lg hover:bg-stone-200 duration-150">
                   <img src={item.img} alt="None" className="w-4/5 mx-auto" />
                   <p className="ml-1 text-center text-slate-500 text-sm">
-                    رستوران
+                    {item.label}{" "}
                   </p>
                 </div>
               </SwiperSlide>

@@ -25,7 +25,8 @@ button,
 span,
 Input,
 h2,
-h5 {
+h5,
+* {
   font-family: IRANSansX !important;
 }
 
@@ -43,4 +44,16 @@ h5 {
 
 ::-webkit-scrollbar-thumb {
   background-color: #808092b6;
+}
+
+.ant-segmented .ant-segmented-item-selected {
+  color: #ff00a6 !important;
+}
+
+.custom-modal .ant-modal-content {
+  padding: 0 !important; /* Remove padding from modal body */
+}
+
+.custom-select .ant-select-selector {
+  border: 1px solid #cbd5e1 !important;
 }
