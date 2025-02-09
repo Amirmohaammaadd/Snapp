@@ -7,9 +7,9 @@ import Ownbussines from "../Components/Landing Page/ownbussines";
 
 const LandingPage = () => {
   return (
-    <>
+    <div className="dark:bg-dark-background transition-all duration-700">
       <div className="container mx-auto w-[80%] lg:w-[68%]">
-        <div className="space-y-16 mt-10">
+        <div className="space-y-16 pt-10">
           <NavBanner />
           <ItemBox />
           <MainOffer />
@@ -18,7 +18,7 @@ const LandingPage = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

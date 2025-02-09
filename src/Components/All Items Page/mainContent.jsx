@@ -1,6 +1,6 @@
 import { EnvironmentOutlined, StarOutlined } from "@ant-design/icons";
 import { ConfigProvider, Modal, Rate, Segmented } from "antd";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../../App.css";
 
 import mini1 from "../../assets/img/All main item/mini/1-mini.jpg";
@@ -516,6 +516,12 @@ const AllItemMainContent = () => {
 
   console.log(itemData);
 
+
+  // ------------------------------------------------
+
+  
+
+
   return (
     <>
       <div className="mt-28">
@@ -526,7 +532,7 @@ const AllItemMainContent = () => {
         <div className="w-[80%] md:w-[90%] xl:w-[70%] mt-10 mx-auto !gap-5 flex flex-col lg:flex-row justify-between relative">
           {/* ---------------- A --------------- */}
 
-          <div className="flex flex-col gap-3 lg:fixed ">
+          <div className="flex flex-col gap-3">
             <div className="rounded-lg p-5 flex flex-col gap-5 shadow-[0px_0px_10px_-2px_rgba(0,_0,_0,_0.1)] border-slate-100 border">
               <p className="p-3 font-semibold text-slate-700 bg-[#f3f4f4] rounded-lg text-sm">
                 همه دسته‌بندی‌ها
@@ -535,9 +541,9 @@ const AllItemMainContent = () => {
                 {sideItems.map((item, index) => (
                   <div
                     onClick={() => {
-                      index === 4 || index === 6
+                      index == 4 || index == 6
                         ? setSelectedValue(1)
-                        : index === 5 || index === 7
+                        : index == 5 || index == 7
                         ? setSelectedValue(3)
                         : setSelectedValue(item.id);
                     }}
@@ -583,12 +589,14 @@ const AllItemMainContent = () => {
             </div>
           </div>
 
+
+
           {/* ---------------- B --------------- */}
 
           <div className="w-full lg:w-3/4 mr-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             {/* ----------------------- */}
 
-            {selectedValue === 1 ? (
+            {selectedValue == 1 ? (
               <>
                 {AllMainItems.map((item) => (
                   <div
@@ -634,7 +642,7 @@ const AllItemMainContent = () => {
                   </div>
                 ))}
               </>
-            ) : selectedValue === 2 ? (
+            ) : selectedValue == 2 ? (
               <>
                 {EconomyMainItems.map((item) => (
                   <div
@@ -680,7 +688,7 @@ const AllItemMainContent = () => {
                   </div>
                 ))}
               </>
-            ) : selectedValue === 3 ? (
+            ) : selectedValue == 3 ? (
               <>
                 {MediumMainItems.map((item) => (
                   <div
@@ -726,7 +734,7 @@ const AllItemMainContent = () => {
                   </div>
                 ))}
               </>
-            ) : selectedValue === 4 ? (
+            ) : selectedValue == 4 ? (
               <>
                 {ExpensiveMainItems.map((item) => (
                   <div

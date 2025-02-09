@@ -1,8 +1,11 @@
 import { ShopOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import ShopIcon from "../../assets/img/content 2/11.png";
+import { useNavigate } from "react-router-dom";
 
 const Ownbussines = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="flex justify-center lg:justify-between bg-stone-50 relative pb-10 rounded-lg !mt-[10%]">
@@ -15,6 +18,7 @@ const Ownbussines = () => {
           <Button
             className="!text-white bg-[#ff2882] !border-none hover:!bg-[#ca1c64] w-full lg:w-fit text-xl"
             size="large"
+            onClick={() => navigate("/sellers-register")}
           >
             <ShopOutlined className="text-xl" />
             ثبت نام فروشندگان
